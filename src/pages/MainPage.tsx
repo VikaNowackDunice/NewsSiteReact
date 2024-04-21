@@ -1,42 +1,45 @@
-import * as React from 'rect';
-import { useEffect } from 'react';
-import PostCard from '../components/PostCard/PostCard';
-// import { postsRequested } from '@redux/actions/posts';
-import { useAppDispatch, useAppSelector } from '@hooks';
+import { FC, useEffect, useState } from "react";
 
-// import CircularComponent from '../components/CircularComponent/CircularComponent';
-import ErrorComponent from '../components/ErrorComponent/ErrorComponent';
-import { PostProps } from '../components/PostCard/PostProps';
+import { Button } from "@mui/material";
 
-const MainPage = (): JSX.Element => {
-  const dispatch = useAppDispatch();
-  const posts = useAppSelector((state) => state.posts.posts);
-  const isLoading = useAppSelector((state) => state.posts.isLoading);
-  const error =useAppSelector((state) => state.posts?.error);
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { fetchPostsRequest } from "@/redux/actions/postActions";
+import PostCard from "../components/PostCard/PostCard";
+import ErrorComponent from "../components/ErrorComponent/ErrorComponent";
+import { LoginModal } from "../components/LoginModal/LoginModal";
 
-  // useEffect(() => {
-  //   dispatch(postsRequested());
-  // }, [])
+const MainPage: FC = () => {
+  const [isOpenLoginModal, toggleLoginModal] = useState(false);
 
-  // if(isLoading) return <CircularComponent />;
+  const dispatch = useAppDispatch(); // связывает redux and react
+  const postsData = useAppSelector((state) => state.posts);
 
-  if(error) return <ErrorComponent value={error} severity='error' />;
-  
+  const handleOpenLoginModal = () => toggleLoginModal(true);
+  const handleCloseLoginModal = () => toggleLoginModal(false);
+
+  useEffect(() => {
+    dispatch(fetchPostsRequest());
+  }, []);
+
+  if (postsData.error)
+    return <ErrorComponent value={postsData.error} severity="error" />;
+  if (postsData.isLoading) return "Загрузка...";
+
   return (
-    <main className='wrapper'>
-      {posts.length ===0 && <ErrorComponent value='There are no posts' severity='info'/>}
-      {posts.length >0 &&
-        posts.map((post: PostProps) =>{
-          <PostCard
-            key={post.id}
-            author={post.author}
-            theme={post.theme}
-            content={post.content}
-            tags={post.tags}
-            imagePath={post.imagePath}
-          />
-        })
-      }
+    <main className="wrapper">
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={handleOpenLoginModal}
+      >
+        Авторизоваться
+      </Button>
+      {postsData.posts.length === 0 && (
+        <ErrorComponent value="There are no posts" severity="info" />
+      )}
+      {postsData.posts.length > 0 &&
+        postsData.posts.map((post) => <PostCard key={post.id} post={post} />)}
+      <LoginModal open={isOpenLoginModal} onClose={handleCloseLoginModal} />
     </main>
   );
 };

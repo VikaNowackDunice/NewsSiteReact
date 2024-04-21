@@ -1,39 +1,39 @@
-import defaultImage from '@assets/post_img.jpg';
+import { FC } from 'react';
 import Card from '@mui/material/CardContent';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import CardMedia from '@mui/material/CardMedia/CardMedia';
 
-import { cardStyle } from "./style";
-import { PostProps } from "./PostProps";
+import type { Post } from "@/types/Post";
 
-const  PostCard = ({
-  author,
-  theme,
-  content,
-  tags,
-  imagePath}: PostProps) : JSX.Element => {
+import { cardStyle } from "./style";
+
+type PostCardProps = {
+  post: Post,
+};
+
+const  PostCard: FC<PostCardProps> = ({ post }) => {
     return (
       <Card sx={cardStyle}>
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {author.name}
+            {post.author.email}
           </Typography>
           <Typography gutterBottom variant="h5" component="div">
-            {theme}
+            {post.theme}
           </Typography>
           <Typography  variant="body2" color="text.secondary">
-            {content}
+            {post.content}
           </Typography>
           <Typography  variant="body2" color="text.secondary">
-            {tags.map((tag) => <span key={tag.id}>#{tag.name}</span>)}
+            {post.tags.map((tag) => <span key={tag.id}>#{tag.name}</span>)}
           </Typography>
         </CardContent>
-        <CardMedia
+        {!!post.imagePath && <CardMedia
           component='img'
           height='200'
-          image={imagePath || defaultImage}
-        />
+          image={post.imagePath}
+        />}
       </Card>
     );
   };
