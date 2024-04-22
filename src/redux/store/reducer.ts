@@ -1,4 +1,4 @@
-import { REGISTER_USER_REQUEST, LOGIN_USER } from "../actions/action";
+import { REGISTER_USER_REQUEST, LOGIN_USER } from "@/redux/actionTypes";
 
 export const reducer = (
   state = {

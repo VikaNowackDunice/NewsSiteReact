@@ -1,2 +1,2 @@
 export * from "./postsActionTypes";
-export * from "./tagsActionTypes";
+export * from "./authorActionTypes";

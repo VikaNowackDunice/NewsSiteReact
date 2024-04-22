@@ -1,6 +1,6 @@
 import {call, put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
-import {REGISTER_USER_REQUEST,LOGIN_USER} from '../actions/action'
+import {REGISTER_USER_REQUEST,LOGIN_USER} from '../actionTypes/authorActionTypes'
 
 function* registerUser(action: { payload: unknown; }) {
   try {

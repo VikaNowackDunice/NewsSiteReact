@@ -1,5 +1,4 @@
 import { FC, useEffect, useState } from "react";
-
 import { Button } from "@mui/material";
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
@@ -26,7 +25,7 @@ const MainPage: FC = () => {
   if (postsData.isLoading) return "Загрузка...";
 
   return (
-    <main className="wrapper">
+    <div className="wrapper">
       <Button
         variant="contained"
         color="primary"
@@ -40,7 +39,7 @@ const MainPage: FC = () => {
       {postsData.posts.length > 0 &&
         postsData.posts.map((post) => <PostCard key={post.id} post={post} />)}
       <LoginModal open={isOpenLoginModal} onClose={handleCloseLoginModal} />
-    </main>
+    </div>
   );
 };
 

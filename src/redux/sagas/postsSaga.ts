@@ -3,13 +3,13 @@ import { call, put, takeLatest } from "redux-saga/effects";
 
 import type { Post, CreatePostDto } from "@/types/Post";
 import { getPostsRequest, createPostRequest } from "@/api/api";
-import { FETCH_POSTS_REQUEST, CREATE_POST_REQUEST } from "../actionTypes";
+import { FETCH_POSTS_REQUEST, CREATE_POST_REQUEST, } from "../actionTypes";
 import {
-  fetchPostsSuccess,
-  fetchPostsFailure,
   createPostFailure,
   fetchPostsRequest,
   createPostSuccess,
+  fetchPostsSuccess,
+  fetchPostsFailure,
 } from "../actions/postActions";
 
 function* fetchPostsWorker(_action: Action<typeof FETCH_POSTS_REQUEST>) {
@@ -17,9 +17,10 @@ function* fetchPostsWorker(_action: Action<typeof FETCH_POSTS_REQUEST>) {
     const response = (yield call(getPostsRequest)) as Post[];
     yield put(fetchPostsSuccess(response));
   } catch (error) {
-    yield put(fetchPostsFailure((error as string) ?? "Ошибка загрузки постов"));
+    yield put(fetchPostsFailure((error as string) ?? "Error loading posts"));
   }
 }
+
 
 function* createPostWorker(
   action: Action<typeof CREATE_POST_REQUEST> & { payload: CreatePostDto }

@@ -1,4 +1,4 @@
-import { Post, CreatePostDto } from "@/types/Post";
+import { Post, CreatePostDto, Tag } from "@/types/Post";
 import {
   FETCH_POSTS_REQUEST,
   FETCH_POSTS_SUCCESS,
@@ -41,3 +41,4 @@ export const createPostFailure = (error: string) =>
     type: CREATE_POST_FAILURE,
     payload: error,
   } as const);
+

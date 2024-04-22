@@ -14,11 +14,13 @@ export type Post = {
   theme: string;
   tags: Tag[];
   content: string;
-  imagePath: string | null;
+  imagePath: string;
 };
 
-// описать тип DTO из бэка
 export type CreatePostDto = {
   content: string;
-  // ...
+  theme: string;
+  id: number;
+  img: string;
+  userId: number
 };
