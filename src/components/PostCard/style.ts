@@ -1,1 +1,6 @@
-export const cardStyle = { maxWidth: 700, margin: 2, };
+export const cardStyle = {
+  maxWidth: '100%',
+  margin: 2,
+  background: '#AFEEEE'
+};
+

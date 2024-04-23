@@ -6,6 +6,9 @@ type LoginFormProps = {
 };
 
 export const LoginForm: FC<LoginFormProps> = (props) => {
+  const [isCloseLoginModal, setModalClose] = useState(false);
+
+  const CloseModal = () => setModalClose(false);
   const [login, setLogin] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,12 +17,9 @@ export const LoginForm: FC<LoginFormProps> = (props) => {
     e.preventDefault();
     
     try {
-      console.log("form", login, email, password);
-      // send requst to API
-
       props.onClose();
     } catch (err) {
-      console.log('ERROR', err);
+      throw new Error('error')
     }
   };
 
@@ -68,7 +68,11 @@ export const LoginForm: FC<LoginFormProps> = (props) => {
       />
 
       <div>
-        <Button variant="contained" sx={{ margin: "2rem" }}>
+        <Button 
+          variant="contained" sx={{ margin: "2rem" }}
+          
+          // onClick={CloseModal}
+        >
           Отмена
         </Button>
         <Button

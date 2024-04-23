@@ -2,7 +2,7 @@ import { Action } from "redux-saga";
 import { call, put, takeLatest } from "redux-saga/effects";
 
 import type { Post, CreatePostDto } from "@/types/Post";
-import { getPostsRequest, createPostRequest } from "@/api/api";
+import { getPostsRequest, createPostRequest } from "@/redux/api/api";
 import { FETCH_POSTS_REQUEST, CREATE_POST_REQUEST, } from "../actionTypes";
 import {
   createPostFailure,

@@ -6,7 +6,7 @@ import CardMedia from '@mui/material/CardMedia/CardMedia';
 
 import type { Post } from "@/types/Post";
 
-import { cardStyle } from "./style";
+import { cardStyle } from "@/components/PostCard/style";
 
 type PostCardProps = {
   post: Post,
@@ -16,8 +16,14 @@ const  PostCard: FC<PostCardProps> = ({ post }) => {
     return (
       <Card sx={cardStyle}>
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {post.author?.email}
+            <CardMedia
+              component='img'
+              height='100'
+              style={{ maxWidth: '100px', width: '100%' }}
+              image={post.user.img}
+            />
+          <Typography gutterBottom variant="body2" component="div">
+            {post.user?.login}
           </Typography>
           <Typography gutterBottom variant="h5" component="div">
             {post.theme}
@@ -26,13 +32,14 @@ const  PostCard: FC<PostCardProps> = ({ post }) => {
             {post.content}
           </Typography>
           <Typography  variant="body2" color="text.secondary">
-            {post.tags?.map((tag) => <span key={tag.id}>#{tag.name}</span>)}
+            {post.tags.map((tag) => <span key={tag.id}>#{tag.name}</span>)}
           </Typography>
         </CardContent>
         <CardMedia
           component='img'
-          height='200'
-          image={post.imagePath}
+          height='400'
+          style={{ maxWidth: '650px', width: '100%' }}
+          image={post.img}
         />
       </Card>
     );

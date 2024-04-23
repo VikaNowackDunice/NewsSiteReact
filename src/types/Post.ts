@@ -1,6 +1,7 @@
 export type Author = {
   id: number;
-  email: string;
+  login: string;
+  img: string;
 };
 
 export type Tag = {
@@ -10,11 +11,11 @@ export type Tag = {
 
 export type Post = {
   id: number;
-  author: Author;
+  user: Author;
   theme: string;
   tags: Tag[];
   content: string;
-  imagePath: string;
+  img: string;
 };
 
 export type CreatePostDto = {
