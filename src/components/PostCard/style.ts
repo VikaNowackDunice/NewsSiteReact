@@ -1,6 +1,8 @@
 export const cardStyle = {
   maxWidth: '100%',
-  margin: 2,
-  background: '#AFEEEE'
+  marginTop: '20px',
+  background: '#AFEEEE',
+  color: 'black',
+  position: 'absolut'
 };
 

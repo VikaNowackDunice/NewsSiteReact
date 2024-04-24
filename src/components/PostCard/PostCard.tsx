@@ -22,13 +22,13 @@ const  PostCard: FC<PostCardProps> = ({ post }) => {
               style={{ maxWidth: '100px', width: '100%' }}
               image={post.user.img}
             />
-          <Typography gutterBottom variant="body2" component="div">
+          <Typography gutterBottom variant="body2" component="div" color="#FF0000">
             {post.user?.login}
           </Typography>
           <Typography gutterBottom variant="h5" component="div">
             {post.theme}
           </Typography>
-          <Typography  variant="body2" color="text.secondary">
+          <Typography  variant="body2" color="black">
             {post.content}
           </Typography>
           <Typography  variant="body2" color="text.secondary">

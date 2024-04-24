@@ -6,9 +6,6 @@ type LoginFormProps = {
 };
 
 export const LoginForm: FC<LoginFormProps> = (props) => {
-  const [isCloseLoginModal, setModalClose] = useState(false);
-
-  const CloseModal = () => setModalClose(false);
   const [login, setLogin] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -70,8 +67,7 @@ export const LoginForm: FC<LoginFormProps> = (props) => {
       <div>
         <Button 
           variant="contained" sx={{ margin: "2rem" }}
-          
-          // onClick={CloseModal}
+          onClick={props.onClose} 
         >
           Отмена
         </Button>

@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import { Button } from "@mui/material";
+import { Box, Button } from "@mui/material";
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { fetchPostsRequest } from "@/redux/actions/postActions";
@@ -29,27 +29,30 @@ const MainPage: FC = () => {
   if (postsData.isLoading) return "Загрузка...";
 
   return (
-    <AppBar position="static">
-      <Toolbar>
+    <><AppBar style={{ position: 'static', height: '100px', top: 0, }}>
+      <Toolbar style={{ justifyContent: 'space-between' }}>
         <Typography variant="h3" component="div">
           НОВОСТИ МИРА
         </Typography>
         <div>
-        <Button 
-        variant="contained"
-        onClick={OpenModal}
-        >
-          Авторизоваться
-        </Button>
-        {postsData.posts.length === 0 && (
-        <ErrorComponent value="There are no posts" severity="info" />
-      )}
-      {postsData.posts.length > 0 &&
-        postsData.posts.map((post) => <PostCard key={post.id} post={post} />)}
-      <LoginModal open={isOpenLoginModal} onClose={CloseModal} />
+          <Button
+            variant="contained"
+            onClick={OpenModal}
+          >
+            Авторизоваться
+          </Button>
+          {postsData.posts.length === 0 && (
+            <ErrorComponent value="There are no posts" severity="info" />
+          )}
         </div>
       </Toolbar>
-    </AppBar>
+
+    </AppBar><Box>
+        {postsData.posts.length > 0 &&
+          postsData.posts.map((post) => <PostCard key={post.id} post={post} />)}
+        <LoginModal open={isOpenLoginModal} onClose={CloseModal} />
+      </Box></>
+    
   );
 };
 
