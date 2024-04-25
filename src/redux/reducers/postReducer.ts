@@ -1,5 +1,5 @@
-import type { Post } from "@/types/Post";
-import { PostsActions } from "../types/postActions";
+import type { Post } from "@/types/types";
+import { PostsActions } from "../types/postTypes";
 import {
   FETCH_POSTS_REQUEST,
   FETCH_POSTS_SUCCESS,

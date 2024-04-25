@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import type { Post, CreatePostDto } from "@/types/Post";
+import type { Post, CreatePostDto, LoginAuthor, CreateAuthorDto } from "@/types/types";
 
 export const baseApi = axios.create({ baseURL: "http://localhost:5004/" });
 
@@ -14,12 +14,13 @@ export const createPostRequest = async (dto: CreatePostDto) => {
   return response.data;
 };
 
-export const logInRequest = async () => {
-  const response = await baseApi.post("author/login");
+export const registerRequest = async (dto: CreateAuthorDto) => {
+  const response = await baseApi.post("author/register", dto);
   return response.data;
 };
 
-export const registerRequest = async () => {
-  const response = await baseApi.post("author/register");
+export const logInRequest = async (dto: LoginAuthor) => {
+  const response = await baseApi.post("author/login", dto);
   return response.data;
 };
+

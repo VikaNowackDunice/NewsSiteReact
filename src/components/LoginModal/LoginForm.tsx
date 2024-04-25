@@ -6,10 +6,8 @@ type LoginFormProps = {
 };
 
 export const LoginForm: FC<LoginFormProps> = (props) => {
-  const [login, setLogin] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
     
@@ -31,14 +29,6 @@ export const LoginForm: FC<LoginFormProps> = (props) => {
         padding: "2rem",
       }}
     >
-      <TextField
-        label="Логин"
-        variant="filled"
-        required
-        value={login}
-        onChange={e => setLogin(e.target.value)}
-        style={{ margin: "1rem", width: "300px" }}
-      />
 
       <TextField
         label="Email"
@@ -71,6 +61,7 @@ export const LoginForm: FC<LoginFormProps> = (props) => {
         >
           Отмена
         </Button>
+        
         <Button
           variant="contained"
           color="primary"

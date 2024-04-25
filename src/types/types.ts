@@ -25,3 +25,18 @@ export type CreatePostDto = {
   img: string;
   userId: number
 };
+
+export type CreateAuthorDto = {
+  id?: number;
+  email: string;
+  login: string;
+  img: string;
+  password: string;
+}
+
+export type LoginAuthor = {
+  id?: number;
+  email: string;
+  login: string;
+  password: string;
+}

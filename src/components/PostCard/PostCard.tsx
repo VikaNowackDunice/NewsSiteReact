@@ -4,7 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import CardMedia from '@mui/material/CardMedia/CardMedia';
 
-import type { Post } from "@/types/Post";
+import type { Post } from "@/types/types";
 
 import { cardStyle } from "@/components/PostCard/style";
 
@@ -38,7 +38,7 @@ const  PostCard: FC<PostCardProps> = ({ post }) => {
         <CardMedia
           component='img'
           height='400'
-          style={{ maxWidth: '650px', width: '100%' }}
+          style={{ maxWidth: '650px', width: '100%', margin: 'auto'}}
           image={post.img}
         />
       </Card>

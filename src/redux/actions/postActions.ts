@@ -1,4 +1,4 @@
-import { Post, CreatePostDto, Tag } from "@/types/Post";
+import { Post, CreatePostDto } from "@/types/types";
 import {
   FETCH_POSTS_REQUEST,
   FETCH_POSTS_SUCCESS,

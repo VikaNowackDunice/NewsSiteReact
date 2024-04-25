@@ -3,6 +3,8 @@ export const cardStyle = {
   marginTop: '20px',
   background: '#AFEEEE',
   color: 'black',
-  position: 'absolut'
+  position: 'absolut',
+  display: 'flex',
+  justifyContent: 'center',
 };
 

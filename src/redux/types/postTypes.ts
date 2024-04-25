@@ -1,6 +1,6 @@
 import { Action } from "redux-saga";
 
-import { Post } from "@/types/Post";
+import { Post } from "@/types/types";
 import {
   FETCH_POSTS_REQUEST,
   FETCH_POSTS_SUCCESS,
